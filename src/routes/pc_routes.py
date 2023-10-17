@@ -4,7 +4,8 @@ from src.config.conexion import collections
 from src.controllers.pc_controllers import (
     insertar_pc,
     obtener_pc,
-    actualizar_pc
+    actualizar_pc,
+    eliminar_pc
 )
 
 ##inicializando rutas de las pc
@@ -23,3 +24,8 @@ def obtener_pc_ruta():
 @pc_routes.route('/pc/<id>', methods=['PUT'])
 def actualizar_pc_ruta(id):
     return actualizar_pc(collections('pc'), id)
+
+#ruta eliminar pc
+@pc_routes.route('/pc/<id>', methods=['DELETE'])
+def eliminar_pc_ruta(id):
+    return eliminar_pc(collections('pc'), id)

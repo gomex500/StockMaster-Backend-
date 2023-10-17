@@ -31,8 +31,8 @@ Content-Type: application/json
 
 {
     "Codigo": "PC-93075-B",
-    "Marca": "Eddy12@gmail.com",
-    "Sistema Operativo": "eddyWindows 10 Pro1234",
+    "Marca": "DELL",
+    "SistemaOperativo": "Windows 10 Pro1234",
     "Hardware": [
         "intel i3 10ma",
         "4GB RAM",
@@ -47,7 +47,7 @@ Content-Type: application/json
     "Configuración Red": "sin epecificar",
     "Usuarios": "Usuarios: 1",
     "Seguridad": "Contraseñas Baja",
-    "Registro Eventos": "Monitoreado",
+    "RegistroEventos": "Monitoreado",
     "Microscopio": {
         "Codigo": "MC-93075-A",
         "Modelo": "B-CAM16"
@@ -64,13 +64,13 @@ Content-Type: application/json
 
 
 ####
-PUT {{api}}/pc/652dfed82f6c2abd0929f879
+PUT {{api}}/pc/652e1a49897677ef29e6e73d
 Content-Type: application/json
 
 {
     "Codigo": "PC-93075-B",
     "Marca": "DELL",
-    "Sistema Operativo": "eddyWindows 10 Pro1234",
+    "SistemaOperativo": "Windows 10 Pro1234",
     "Hardware": [
         "intel i3 10ma",
         "4GB RAM",
@@ -82,10 +82,10 @@ Content-Type: application/json
         "B-View"
     ],
     "Actualizaciones": "Últimas actualizaciones",
-    "Configuración Red": "sin epecificar",
+    "ConfiguraciónRed": "sin epecificar",
     "Usuarios": "Usuarios: 1",
     "Seguridad": "Contraseñas Baja",
-    "Registro Eventos": "Monitoreado",
+    "RegistroEventos": "Monitoreado",
     "Microscopio": {
         "Codigo": "MC-93075-A",
         "Modelo": "B-CAM16"
@@ -95,3 +95,7 @@ Content-Type: application/json
         "Modelo": "APC"
     }
 }
+
+###
+DELETE {{api}}/pc/652ebd34e4a91c4f23408b6d
+Content-Type: application/json

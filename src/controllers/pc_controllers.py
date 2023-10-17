@@ -38,3 +38,13 @@ def actualizar_pc(collections, id):
         response = jsonify({"message": "Error de petición", "error": str(e)})
         response.status = 400
         return response
+
+#controlador eliminar usuario
+def eliminar_pc(collections, id):
+    try:
+        collections.delete_one({'_id': ObjectId(id)})
+        return jsonify({'mensaje': 'PC eliminada'})
+    except:
+        response = jsonify({"menssage":"error de peticion"})
+        response.status = 401
+        return response
