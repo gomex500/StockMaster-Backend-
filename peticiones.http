@@ -1,0 +1,97 @@
+@api = http://127.0.0.1:5000
+
+GET {{api}}
+
+###agregar
+POST {{api}}/users
+Content-Type: application/json
+
+{
+    "nombre": "Eddy",
+    "email": "Eddy12@gmail.com",
+    "password": "eddy1234"
+}
+
+####
+GET {{api}}/users
+Content-Type: application/json
+
+###
+GET {{api}}/user/652de98ff8092df48bc0e366
+Content-Type: application/json
+
+###
+DELETE {{api}}/user/652dec41d07992e6c7588b0d
+Content-Type: application/json
+
+
+####
+POST {{api}}/pc
+Content-Type: application/json
+
+{
+    "Codigo": "PC-93075-B",
+    "Marca": "Eddy12@gmail.com",
+    "Sistema Operativo": "eddyWindows 10 Pro1234",
+    "Hardware": [
+        "intel i3 10ma",
+        "4GB RAM",
+        "1 TB De almacenamiento"
+    ],
+    "Software": [
+        "Office 365",
+        "Microsoft Edge",
+        "B-View"
+    ],
+    "Actualizaciones": "Últimas actualizaciones",
+    "Configuración Red": "sin epecificar",
+    "Usuarios": "Usuarios: 1",
+    "Seguridad": "Contraseñas Baja",
+    "Registro Eventos": "Monitoreado",
+    "Microscopio": {
+        "Codigo": "MC-93075-A",
+        "Modelo": "B-CAM16"
+    },
+    "Bateria": {
+        "Codigo": "BT-93075-D",
+        "Modelo": "APC"
+    }
+}
+
+####
+GET {{api}}/pc
+Content-Type: application/json
+
+
+####
+PUT {{api}}/pc/652dfed82f6c2abd0929f879
+Content-Type: application/json
+
+{
+    "Codigo": "PC-93075-B",
+    "Marca": "DELL",
+    "Sistema Operativo": "eddyWindows 10 Pro1234",
+    "Hardware": [
+        "intel i3 10ma",
+        "4GB RAM",
+        "1 TB De almacenamiento"
+    ],
+    "Software": [
+        "Office 365",
+        "Microsoft Edge",
+        "B-View"
+    ],
+    "Actualizaciones": "Últimas actualizaciones",
+    "Configuración Red": "sin epecificar",
+    "Usuarios": "Usuarios: 1",
+    "Seguridad": "Contraseñas Baja",
+    "Registro Eventos": "Monitoreado",
+    "Microscopio": {
+        "Codigo": "MC-93075-A",
+        "Modelo": "B-CAM16"
+    },
+    "Bateria": {
+        "Codigo": "BT-93075-D",
+        "Modelo": "APC"
+    }
+}
