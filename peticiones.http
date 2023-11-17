@@ -8,10 +8,20 @@ Content-Type: application/json
 
 {
     "nombre": "Eddy",
-    "email": "Eddy12@gmail.com",
+    "username": "Eddy12@",
+    "rol":1,
     "password": "eddy1234"
 }
 
+
+###agregar
+POST {{api}}/login
+Content-Type: application/json
+
+{
+    "username": "Eddy12@",
+    "password": "eddy1234"
+}
 ####
 GET {{api}}/users
 Content-Type: application/json
@@ -21,7 +31,7 @@ GET {{api}}/user/652de98ff8092df48bc0e366
 Content-Type: application/json
 
 ###
-DELETE {{api}}/user/652dec41d07992e6c7588b0d
+DELETE {{api}}/user/652e1a0d897677ef29e6e73c
 Content-Type: application/json
 
 

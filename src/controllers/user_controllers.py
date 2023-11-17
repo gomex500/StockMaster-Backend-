@@ -5,8 +5,16 @@ import json
 import bcrypt
 
 #funcion para vilidar si el correo existe
-def validacion_email(coll, email):
-    doc = coll.find_one({'email': email})
+def validacion_username(coll, username):
+    doc = coll.find_one({'username': username})
+    if doc:
+        return True
+    return False
+
+#validar si el password existe
+def validar_password(coll, password):
+    passEncriptado = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+    doc = coll.find_one({'password': passEncriptado})
     if doc:
         return True
     return False
@@ -18,8 +26,8 @@ def insertar_usuario(collections):
         user_instance = UserModel(data)
 
         # Verificar si el correo electrónico ya existe
-        if validacion_email(collections, user_instance.email):
-            response = jsonify({"message": "El correo electrónico ya está en uso"})
+        if validacion_username(collections, user_instance.username):
+            response = jsonify({"message": "El user name ya está en uso"})
             response.status_code = 400
             return response
 
@@ -31,11 +39,6 @@ def insertar_usuario(collections):
 
         #insertando password y usuario a la db
         id = collections.insert_one(user_instance.__dict__).inserted_id
-        user_data = {
-            "nombre": user_instance.nombre,
-            "email": user_instance.email,
-            "password": user_instance.password
-        }
         return jsonify({'id':str(id)})
     except:
         response = jsonify({"menssage":"error de registro"})
@@ -80,4 +83,32 @@ def eliminar_usuario(collections, id):
     except:
         response = jsonify({"menssage":"error de peticion"})
         response.status = 401
+        return response
+
+#controllador de logeo de usuarios
+def login(collections):
+    try:
+        data = json.loads(request.data)
+        user_instance = UserModel(data)
+
+        # Validar si el correo electrónico existe
+        if not validacion_username(collections, user_instance.username):
+            response = jsonify({"message": "El user name no existe"})
+            response.status_code = 401
+            return response
+
+        # Obtener el documento del usuario
+        user_doc = collections.find_one({'username': user_instance.username})
+
+        # Validar la contraseña
+        if not bcrypt.checkpw(user_instance.password.encode('utf-8'), user_doc['password'].encode('utf-8')):
+            response = jsonify({"message": "La contraseña no es válida"})
+            response.status_code = 401
+            return response
+
+        return jsonify({'id': str(user_doc['_id'])})
+    except Exception as e:
+        print(str(e))
+        response = jsonify({"message": "Error de inicio de sesión"})
+        response.status_code = 400
         return response

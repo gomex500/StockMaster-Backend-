@@ -4,7 +4,8 @@ from src.controllers.user_controllers import (
     insertar_usuario,
     obtener_usuarios,
     obtener_usuario,
-    eliminar_usuario
+    eliminar_usuario,
+    login
 )
 
 #inicializando rutas de usuario
@@ -14,6 +15,11 @@ user_routes = Blueprint('user_routes', __name__)
 @user_routes.route('/users', methods=['POST'])
 def insertar_usuario_ruta():
     return insertar_usuario(collections('usuarios'))
+
+#ruta de logeo de usuario
+@user_routes.route('/login', methods=['POST'])
+def login_route():
+    return login(collections('usuarios'))
 
 #ruta mostrar usuarios
 @user_routes.route('/users', methods=['GET'])
