@@ -5,7 +5,9 @@ from src.controllers.user_controllers import (
     obtener_usuarios,
     obtener_usuario,
     eliminar_usuario,
-    login
+    login,
+    obtener_username,
+    actualizar_usuario
 )
 
 #inicializando rutas de usuario
@@ -35,3 +37,13 @@ def obtener_usuario_ruta(id):
 @user_routes.route('/user/<id>', methods=['DELETE'])
 def eliminar_usuario_ruta(id):
     return eliminar_usuario(collections('usuarios'), id)
+
+#ruta mostrar usuario por el correo
+@user_routes.route('/username/<username>', methods=['GET'])
+def obtener_username_ruta(username):
+    return obtener_username(collections('usuarios'), username)
+
+#ruta actualizar usuario
+@user_routes.route('/user/<id>', methods=['PUT'])
+def actualizar_usuario_ruta(id):
+    return actualizar_usuario(collections('usuarios'), id)

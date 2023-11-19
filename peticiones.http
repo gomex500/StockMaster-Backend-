@@ -13,6 +13,16 @@ Content-Type: application/json
     "password": "eddy1234"
 }
 
+####
+PUT {{api}}/user/6559a09915920629054dcef4
+Content-Type: application/json
+
+{
+    "nombre": "Juan Bolas",
+    "username": "Juan69",
+    "rol":1
+}
+
 
 ###agregar
 POST {{api}}/login
@@ -24,6 +34,10 @@ Content-Type: application/json
 }
 ####
 GET {{api}}/users
+Content-Type: application/json
+
+####
+GET {{api}}/username/Juan69
 Content-Type: application/json
 
 ###
