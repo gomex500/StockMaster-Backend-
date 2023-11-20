@@ -5,7 +5,8 @@ from src.controllers.pc_controllers import (
     insertar_pc,
     obtener_pc,
     actualizar_pc,
-    eliminar_pc
+    eliminar_pc,
+    obtener_pcC
 )
 
 ##inicializando rutas de las pc
@@ -29,3 +30,8 @@ def actualizar_pc_ruta(id):
 @pc_routes.route('/pc/<id>', methods=['DELETE'])
 def eliminar_pc_ruta(id):
     return eliminar_pc(collections('pc'), id)
+
+#ruta mostrar usuario por el correo
+@pc_routes.route('/codigo/<pc>', methods=['GET'])
+def obtener_pcc_ruta(pc):
+    return obtener_pcC(collections('pc'), pc)

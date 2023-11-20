@@ -1,3 +1,4 @@
+from json import dumps
 from turtle import st
 from flask import request, jsonify
 from bson import ObjectId
@@ -47,4 +48,25 @@ def eliminar_pc(collections, id):
     except:
         response = jsonify({"menssage":"error de peticion"})
         response.status = 401
+        return response
+
+#controlador mostrar usuario por email
+def obtener_pcC(collections, pc):
+    try:
+        users = []
+
+        # Si se proporciona un código específico, filtra la consulta
+        if pc:
+            pcC = collections.find({'Codigo': pc})
+
+        for doc in pcC:
+            user = doc
+            user['_id'] = str(doc['_id'])
+            users.append(user)
+
+        return jsonify(users)
+
+    except Exception as e:
+        response = jsonify({"message": "Error de petición", "error": str(e)})
+        response.status_code = 500
         return response

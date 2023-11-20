@@ -86,6 +86,9 @@ Content-Type: application/json
 GET {{api}}/pc
 Content-Type: application/json
 
+####
+GET {{api}}/codigo/PC-93075-B
+Content-Type: application/json
 
 ####
 PUT {{api}}/pc/652e1a49897677ef29e6e73d
